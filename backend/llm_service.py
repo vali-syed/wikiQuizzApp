@@ -15,6 +15,7 @@ llm = ChatOpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
+#quizz prompt 
 quiz_prompt = PromptTemplate(
     input_variables=["content"],
     template="""
@@ -54,11 +55,13 @@ def parse_quiz_json(raw_text: str):
     except json.JSONDecodeError:
         return None
 
+#quiz generation using gpt 4o
 def generate_quiz(article_content: str):
     prompt = quiz_prompt.format(content=article_content)
     response = llm.invoke(prompt)
     return parse_quiz_json(response.content)
 
+#related topics generation
 def generate_related_topics(article_content:str):
     prompt = f"""Suggest 5 related wikipedia topucs based on this article summary.
         return a json array of string
@@ -68,6 +71,7 @@ def generate_related_topics(article_content:str):
     response = llm.invoke(prompt)
     return parse_quiz_json(response.content)
 
+# extracting related entities
 def extract_entities(article_content: str):
     prompt = f"""
 Extract key entities from the text.

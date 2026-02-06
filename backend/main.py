@@ -6,7 +6,17 @@ from models import Base,Article
 from schemas import ArticleCreate
 from scrapper import scrape_wikipedia
 from llm_service import generate_quiz,generate_related_topics,extract_entities
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # allow all for now
+    allow_credentials=True,
+    allow_methods=["*"],   # GET, POST, etc
+    allow_headers=["*"],
+)
 
 Base.metadata.create_all(bind=engine)
 

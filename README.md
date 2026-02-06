@@ -94,10 +94,10 @@ The backend will run on `http://127.0.0.1:8000`
 ## Screenshots
 
 ### Quiz Generation View
-![Quiz Generation View](Screenshot 2026-02-06 103915.png)
+<img width="1920" height="1200" alt="Screenshot 2026-02-06 103915" src="https://github.com/user-attachments/assets/6af137d3-0f02-42d8-bd05-2a9d4d046008" />
 
 ### Quiz History View
-![Quiz History View](Screenshot 2026-02-06 103930.png)
+<img width="1920" height="1200" alt="Screenshot 2026-02-06 103930" src="https://github.com/user-attachments/assets/94889890-f289-4f01-b948-6cc73ffecc22" />
 
 ## Project Structure
 

@@ -14,9 +14,18 @@ Base.metadata.create_all(bind=engine)
 def checking():
     return {"backend check":'backend running'}
 
-@app.get('/scrape')
-def scrape(url:str):
-    return scrape_wikipedia(url)
+@app.get("/articles")
+def get_articles(db: Session = Depends(get_db)):
+    articles = db.query(Article).all()
+
+    return [
+        {
+            "id": a.id,
+            "title": a.title,
+            "url": a.url
+        }
+        for a in articles
+    ]
 
 @app.post('/articles')
 def create_article(

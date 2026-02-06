@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wiki Quiz Generator</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    button { padding: 8px 12px; margin-right: 10px; }
+    input { padding: 8px; width: 400px; }
+    .tab { display: none; margin-top: 20px; }
+    .active { display: block; }
+    .card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+
+<h2>Wiki Quiz Generator</h2>
+
+<button onclick="showTab('generate')">Generate Quiz</button>
+<button onclick="showTab('history')">Past Quizzes</button>
+
+<!-- TAB 1 -->
+<div id="generate" class="tab active">
+  <h3>Generate Quiz</h3>
+  <input id="url" placeholder="Wikipedia URL" />
+  <button onclick="generate()">Generate</button>
+  <div id="quiz"></div>
+</div>
+
+<!-- TAB 2 -->
+<div id="history" class="tab">
+  <h3>Past Quizzes</h3>
+  <div id="historyList"></div>
+</div>
+
+<script>
+const API = "http://127.0.0.1:8000";
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  if (tab === "history") loadHistory();
+}
+
+async function generate() {
+  const url = document.getElementById("url").value;
+
+  const articleRes = await fetch(`${API}/articles`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ url })
+  });
+  const article = await articleRes.json();
+
+  const quizRes = await fetch(`${API}/articles/${article.id}/quiz`, { method: "POST" });
+  const data = await quizRes.json();
+
+  renderQuiz(data.quiz);
+}
+
+function renderQuiz(quiz) {
+  const div = document.getElementById("quiz");
+  div.innerHTML = "";
+  quiz.forEach(q => {
+    div.innerHTML += `
+      <div class="card">
+        <b>${q.question}</b>
+        <ul>${q.options.map(o => `<li>${o}</li>`).join("")}</ul>
+        <small><b>Answer:</b> ${q.answer}</small>
+      </div>
+    `;
+  });
+}
+
+async function loadHistory() {
+  const res = await fetch(`${API}/articles`);
+  const articles = await res.json();
+
+  const div = document.getElementById("historyList");
+  div.innerHTML = "";
+
+  articles.forEach(a => {
+    div.innerHTML += `
+      <div class="card">
+        <b>${a.title}</b><br/>
+        <small>${a.url}</small><br/>
+        <button onclick="viewQuiz(${a.id})">View Quiz</button>
+      </div>
+    `;
+  });
+}
+
+async function viewQuiz(id) {
+  const res = await fetch(`${API}/articles/${id}/quiz`, { method: "POST" });
+  const data = await res.json();
+  showTab('generate');
+  renderQuiz(data.quiz);
+}
+</script>
+
+</body>
+</html>

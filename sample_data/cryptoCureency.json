@@ -1,0 +1,84 @@
+{
+    "article_id": 1,
+    "title": "Cryptocurrency",
+    "url": "https://en.wikipedia.org/wiki/Cryptocurrency",
+    "quiz": [
+      {
+        "question": "What is the primary characteristic of a cryptocurrency?",
+        "options": [
+          "It relies on a central authority.",
+          "It is a digital currency that operates independently of any central authority.",
+          "It is always backed by physical assets.",
+          "It can only be used for online purchases."
+        ],
+        "answer": "It is a digital currency that operates independently of any central authority.",
+        "difficulty": "easy",
+        "explanation": "Cryptocurrencies are designed to function without reliance on a central authority, distinguishing them from traditional currencies."
+      },
+      {
+        "question": "What is a stablecoin?",
+        "options": [
+          "A type of cryptocurrency that is always volatile.",
+          "A digital currency that maintains a stable value through government action or legislation.",
+          "A cryptocurrency that can only be mined.",
+          "A digital currency that is not stored on a blockchain."
+        ],
+        "answer": "A digital currency that maintains a stable value through government action or legislation.",
+        "difficulty": "medium",
+        "explanation": "Stablecoins are a specific type of cryptocurrency that aims to maintain a stable value, often through regulatory measures."
+      },
+      {
+        "question": "Which of the following is NOT a common consensus mechanism used in cryptocurrencies?",
+        "options": [
+          "Proof of Work",
+          "Proof of Stake",
+          "Proof of Authority",
+          "Proof of Transaction"
+        ],
+        "answer": "Proof of Transaction",
+        "difficulty": "medium",
+        "explanation": "The two most common consensus mechanisms mentioned are proof of work and proof of stake; proof of transaction is not recognized as a standard mechanism."
+      },
+      {
+        "question": "What was the first cryptocurrency ever created?",
+        "options": [
+          "Ethereum",
+          "Litecoin",
+          "Bitcoin",
+          "Ripple"
+        ],
+        "answer": "Bitcoin",
+        "difficulty": "easy",
+        "explanation": "Bitcoin was the first cryptocurrency, released as open-source software in 2009."
+      },
+      {
+        "question": "As of April 2025, what was the estimated market capitalization of the cryptocurrency market?",
+        "options": [
+          "$1 trillion",
+          "$2.8 trillion",
+          "$5 trillion",
+          "$500 billion"
+        ],
+        "answer": "$2.8 trillion",
+        "difficulty": "hard",
+        "explanation": "The article states that the estimated market capitalization of the cryptocurrency market was $2.8 trillion as of April 2025."
+      }
+    ],
+    "key_entities": {
+      "people": [
+        "David Chaum"
+      ],
+      "organizations": [
+        "National Security Agency",
+        "Digicash"
+      ],
+      "locations": []
+    },
+    "related_topics": [
+      "Cryptocurrency",
+      "Stablecoin",
+      "Blockchain",
+      "Proof of Work",
+      "Proof of Stake"
+    ]
+  }
